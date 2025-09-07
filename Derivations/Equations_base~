@@ -1,0 +1,65 @@
+
+************
+*  H basis *
+************
+
+
+
+
+
+
+
+
+
+% Monoalkaline (H base)
+W =Kw/H
+fB =(C_b0*H*K1)/(Kw + H*K1)
+fBOH =(C_b0*Kw)/(Kw + H*K1)
+
+K1*H^3 + (Kw - C_a0*K1 + C_b0*K1)*H^2 + (- C_a0*Kw - K1*Kw)*H - Kw^2
+
+
+
+************
+* OH basis *
+************
+
+%%%%%%%%%%%%%%%%%%%%
+% Monohydroxy base %
+%%%%%%%%%%%%%%%%%%%%
+
+fB =(C_b0*K1)/(K1 + OH)
+fBOH =(C_b0*OH)/(K1 + OH)
+W =Kw/OH
+
+% Polynomial
+
+- OH^3 + (- C_a0 - K1)*OH^2 + (Kw - C_a0*K1 + C_b0*K1)*OH + K1*Kw = 0
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%
+% Dihydroxy base   %
+%%%%%%%%%%%%%%%%%%%%
+
+
+fB =(C_b0*K1*K2)/(OH^2 + K1*OH + K1*K2)
+fBOH =(C_b0*K1*OH)/(OH^2 + K1*OH + K1*K2)
+fB2OH =(C_b0*OH^2)/(OH^2 + K1*OH + K1*K2)
+W =Kw/OH
+
+
+- OH^4 + (- C_a0 - K1)*OH^3 + (Kw - C_a0*K1 + 2*C_b0*K1 - K1*K2)*OH^2 + (K1*Kw - C_a0*K1*K2 + C_b0*K1*K2)*OH + K1*K2*Kw
+
+
+
+
+
+
+
+
+
+
+
+

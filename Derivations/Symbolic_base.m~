@@ -1,0 +1,127 @@
+
+% solve in OH base
+%%%%%%%%%%%%%%%%%%%%
+% Monohydroxy base %
+%%%%%%%%%%%%%%%%%%%%
+
+% With Derivation
+%----------------
+
+%{	K1
+BOH <=========> OH + B
+	Kw'
+H20 <=========> H + OH
+
+K1=(OH*B)/BOH
+C_b0=B+BOH
+Kw=(H*OH)
+Hcl=C_a0
+%}
+
+clc;
+clear;
+syms C_a0 C_b0 Hcl H OH BOH B K1 Kw 
+
+[fB,fBOH]=solve((OH*B)/BOH == K1, B+BOH == C_b0,B,BOH)
+W=solve(H*OH==Kw,H)
+
+%Charge neutrality
+%-----------------
+X=simplifyFraction(W+fB-OH-C_a0,'Expand', true)
+[Y_1,Y_2]=numden(X)
+Z=collect(Y_1,OH)
+
+
+%%%%%%%%%%%%%%%%%%%%
+% Monohydroxy base %
+%%%%%%%%%%%%%%%%%%%%
+
+% With Derivation
+%----------------
+
+%{	K1
+B2OH <=========> BOH + OH
+	K2
+BOH <=========> B + OH
+	Kw'
+H20 <=========> H + OH
+
+K1=(BOH*OH)/B2OH
+K2=(B*OH)/BOH
+C_b0=B+BOH+B2OH
+Kw=(H*OH)
+Hcl=C_a0
+%}
+
+clc;
+clear;
+syms C_a0 C_b0 Hcl H OH B2OH BOH B K1 K2 Kw 
+
+[fB,fBOH,fB2OH]=solve((BOH*OH)/B2OH == K1, (B*OH)/BOH == K2, B+BOH+B2OH == C_b0,B,BOH,B2OH)
+W=solve(H*OH==Kw,H)
+
+%Charge neutrality
+%-----------------
+(H+C_b0-W-2*fA-fHA,'Expand', true)
+X=simplifyFraction(W+2*fBOH+fB-OH-C_a0,'Expand', true)
+[Y_1,Y_2]=numden(X)
+Z=collect(Y_1,OH)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% solve in H base fails
+%%%%%%%%%%%%%%%%%%%
+% Monohydroxy base %
+%%%%%%%%%%%%%%%%%%%
+
+% With Derivation
+%----------------
+
+%{	K1
+BOH <=========> OH + B
+	Kw'
+H20 <=========> H + OH
+
+K1=(OH*B)/BOH
+C_b0=B+BOH
+Kw=(H*OH)
+Hcl=C_a0
+%}
+
+clc;
+clear;
+syms C_a0 C_b0 Hcl H OH BOH B K1 Kw 
+W=solve(H*OH==Kw,OH)
+[fB,fBOH]=solve((W*B)/BOH == K1, B+BOH == C_b0,B,BOH)
+
+
+%Charge neutrality
+%-----------------
+X=simplifyFraction(H+fB-W-C_a0,'Expand', true)
+[Y_1,Y_2]=numden(X)
+Z=collect(Y_1,H)
+
+
